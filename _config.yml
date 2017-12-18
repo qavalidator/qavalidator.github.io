@@ -1,0 +1,12 @@
+title: QAvalidator
+author: QAware GmbH
+email: info@qaware.de
+description: > # this means to ignore newlines until "baseurl:"
+  QAvalidator is a tool for static code analysis.
+
+github_username:  tilmanseifert
+
+sass:
+    style: compressed
+
+include: static

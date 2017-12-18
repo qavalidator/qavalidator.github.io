@@ -1,0 +1,92 @@
+---
+layout: default
+---
+
+<div class="section no-pad-bot" id="index-banner">
+    <div class="container">
+        <br><br>
+        <h1 class="header center orange-text">{{ site.title }}</h1>
+        <div class="row center">
+            <h5 class="header col s12 light">{{ content }}</h5>
+        </div>
+
+        <div class="row center">
+            <a href="/getstarted/" id="download-button"
+               class="btn-large waves-effect waves-light orange">Get Started</a>
+        </div>
+        <br><br>
+
+    </div>
+</div>
+
+<div class="container">
+    <div class="section">
+
+        <!--   Icon Section   -->
+        <div class="row">
+            <div class="col s12 m4">
+                <div class="icon-block">
+                    <h2 class="center light-blue-text"><i class="material-icons">flash_on</i></h2>
+                    <h5 class="center">Model Your Architecture</h5>
+
+                    <p class="light">
+                        Design your architecture to the needs of your project.
+                        Make sure all team members know about the guidelines, and check them automatically.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col s12 m4">
+                <div class="icon-block">
+                    <h2 class="center light-blue-text"><i class="material-icons">group</i></h2>
+                    <h5 class="center">Involve Your Team in Architecture Quality</h5>
+
+                    <p class="light">
+                        It's the responsibility of all your team members to care for code quality as well
+                        as for architecture quality.
+                        They need the right tooling to do their job.
+                        Architecture issues should be visible in the moment they occur, but otherwise the
+                        checking tool should be invisible.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col s12 m4">
+                <div class="icon-block">
+                    <h2 class="center light-blue-text"><i class="material-icons">settings</i></h2>
+                    <h5 class="center">Easy Tool Setup</h5>
+
+                    <p class="light">
+                        The tool chain is easy to setup: Just include QAvalidator in your build.
+                        There are plugins for Maven and Gradle, and a Command Line version for
+                        anything else.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+<div style="background: #ddd">
+    <div class="container last-post">
+        <section>
+            <h5>Latest Post</h5>
+            <ul class="collection">
+                {% for post in site.posts %}
+                <li class="collection-item avatar">
+                    {% assign date_format = site.minima.date_format | default: "%m/%d" %}
+                    <div class="date-post">{{ post.date | date: date_format }}</div>
+                    <span class="title"><a class="post-link" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></span>
+                    <p>
+                        {{ post.content | truncatewords: 10 }}
+                    </p>
+                    <a href="{{ post.url | relative_url }}" class="secondary-content"><i class="material-icons">navigate_next</i></a>
+                </li>
+                {% endfor %}
+            </ul>
+        </section>
+    </div>
+</div>
+
+</div>
