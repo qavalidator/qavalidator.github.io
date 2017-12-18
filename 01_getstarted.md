@@ -10,7 +10,7 @@ permalink: /getstarted/
     <h5>Maven</h5>
 
 Include the Maven Plugin in your pom.xml.
-See the <a href="/static/doc/qav-doc.html">documentation</a> for details.
+See the <a href="/static/doc/qav-doc.html#usage-maven">documentation</a> for details.
 
 Call the QAvalidator run with this command:
 
@@ -22,7 +22,7 @@ Call the QAvalidator run with this command:
     <h5>Gradle</h5> 
 
 Apply the Gradle plugin to your build.gradle. 
-See the <a href="/static/doc/qav-doc.html">documentation</a> for details.
+See the <a href="/static/doc/qav-doc.html#usage-gradle">documentation</a> for details.
 
 Call the QAvalidator run with this command:
 
@@ -39,4 +39,4 @@ There is also a command line tool. It needs the analysis file (mandatory), the o
 
 <pre><code>$ java -jar qav-app-VERSION.jar --analysis=&lt;analysis-file&gt; [--outputDir=&lt;output-dir&gt;] [input-dirs ...]</code></pre>
 
-See the <a href="/static/doc/qav-doc.html">documentation</a> for details.
+See the <a href="/static/doc/qav-doc.html#usage-cli">documentation</a> for details.
