@@ -9,4 +9,5 @@ github_username:  tilmanseifert
 sass:
     style: compressed
 
-include: static
+include:
+  - static
