@@ -16,7 +16,7 @@ Here is an example for a single-module build: <a href="https://github.com/qavali
 <div class="section">
     <h5>Multi-Module Build</h5> 
 
-Here is an example for a single-module build: <a href="https://github.com/qavalidator/sample-app">qavalidator/sample-app</a>
+Here is an example for a multi-module build: <a href="https://github.com/qavalidator/sample-app">qavalidator/sample-app</a>
 
 </div>
 <div class="divider"></div>
