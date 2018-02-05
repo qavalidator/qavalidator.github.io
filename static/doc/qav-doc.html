@@ -2039,8 +2039,8 @@ table.CodeRay td.code>pre{padding:0}
 <h1>QAvalidator</h1>
 <div class="details">
 <span id="author" class="author">Tilman Seifert (QAware GmbH)</span><br>
-<span id="revnumber">version 1.2.7-SNAPSHOT,</span>
-<span id="revdate">22.01.2018</span>
+<span id="revnumber">version 1.2.7,</span>
+<span id="revdate">31.01.2018</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -2099,7 +2099,7 @@ table.CodeRay td.code>pre{padding:0}
 </li>
 <li><a href="#release-notes">6. Release Notes</a>
 <ul class="sectlevel2">
-<li><a href="#_relase_1_2_7_work_in_progress">6.1. Relase 1.2.7 (work in progress)</a></li>
+<li><a href="#_release_1_2_7_31_01_2018">6.1. Release 1.2.7&#8201;&#8212;&#8201;31.01.2018</a></li>
 <li><a href="#_release_1_2_6_04_11_2017">6.2. Release 1.2.6&#8201;&#8212;&#8201;04.11.2017</a></li>
 <li><a href="#_release_1_2_5_21_09_2017">6.3. Release 1.2.5&#8201;&#8212;&#8201;21.09.2017</a></li>
 <li><a href="#_release_1_2_4_11_09_2017">6.4. Release 1.2.4&#8201;&#8212;&#8201;11.09.2017</a></li>
@@ -2773,6 +2773,12 @@ a list of regular expressions, defining all implementation classes.</p>
 It&#8217;s allowed to define the <code>uses</code> keyword more than once.<br>
 Note that this keyword takes the list of <em>API names</em>, not component names. Note also that for components which offer
 only one API, the API name defaults to the component&#8217;s name.</p>
+</dd>
+<dt class="hdlist1">usesImpl</dt>
+<dd>
+<p>The keyword <code>usesImpl</code> defines all implementation parts this component may use.
+It&#8217;s allowed to define the <code>usesImpl</code> keyword more than once.
+This feature exists to be able to define factories which need to create instances of a specific implementation class; it is also useful e.g. for Spring 4 configurations.</p>
 </dd>
 <dt class="hdlist1">excludes</dt>
 <dd>
@@ -4014,6 +4020,43 @@ Filters can be combined in the expected ways, using combinations with <code>and<
 </div>
 </div>
 <div class="sect4">
+<h5 id="_dependencytofilter"><a class="anchor" href="#_dependencytofilter"></a>dependencyToFilter</h5>
+<div class="paragraph">
+<p>Creates a new <code>DependencyToFilter</code>.
+Accepts all edges which have target nodes accepted by the given base filter.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 83.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>baseFilter</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>the node filter for target nodes</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Result</dt>
+<dd>
+<p>The new <code>DependencyToFilter</code></p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect4">
 <h5 id="_dependencytypeedgeoutfilter"><a class="anchor" href="#_dependencytypeedgeoutfilter"></a>dependencyTypeEdgeOutFilter</h5>
 <div class="paragraph">
 <p>Creates a new <code>DependencyTypeEdgeOutFilter</code> to filter out <em>dependencies</em>.</p>
@@ -4086,78 +4129,6 @@ Filters can be combined in the expected ways, using combinations with <code>and<
 </div>
 </div>
 <div class="sect4">
-<h5 id="_dependencytypenodefilter"><a class="anchor" href="#_dependencytypenodefilter"></a>dependencyTypeNodeFilter</h5>
-<div class="paragraph">
-<p>Creates a new <code>DependencyTypeNodeFilter</code>. This is an <em>IN</em> filter.</p>
-</div>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 16.6666%;">
-<col style="width: 83.3334%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Parameter</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>dependencyTypeName</p>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>The dependency type name to accept in the filter.</p>
-</div></div></td>
-</tr>
-</tbody>
-</table>
-<div class="dlist">
-<dl>
-<dt class="hdlist1">Result</dt>
-<dd>
-<p>The new <code>DependencyTypeNodeFilter</code>.</p>
-</dd>
-</dl>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_dependencytypenodefilter_2"><a class="anchor" href="#_dependencytypenodefilter_2"></a>dependencyTypeNodeFilter</h5>
-<div class="paragraph">
-<p>Creates a new <code>DependencyTypeNodeFilter</code>. This is an <em>IN</em> filter.</p>
-</div>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 16.6666%;">
-<col style="width: 83.3334%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Parameter</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>dependencyType</p>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>The dependency type to accept in the filter.</p>
-</div></div></td>
-</tr>
-</tbody>
-</table>
-<div class="dlist">
-<dl>
-<dt class="hdlist1">Result</dt>
-<dd>
-<p>The new <code>DependencyTypeNodeFilter</code>.</p>
-</dd>
-</dl>
-</div>
-</div>
-<div class="sect4">
 <h5 id="_filter"><a class="anchor" href="#_filter"></a>filter</h5>
 <div class="paragraph">
 <p>Returns the filter with the given name.</p>
@@ -4189,6 +4160,232 @@ Filters can be combined in the expected ways, using combinations with <code>and<
 <dt class="hdlist1">Result</dt>
 <dd>
 <p>The filter registered under that name, or null if no such filter is available.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_nodehasdependencytofilter"><a class="anchor" href="#_nodehasdependencytofilter"></a>nodeHasDependencyToFilter</h5>
+<div class="paragraph">
+<p>Creates a new <code>NodeHasDependencyToFilter</code>. Accepts all nodes which have outgoing dependencies to
+nodes which are accepted by the given base filter.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 83.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>graph</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>the graph to work on</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>baseFilter</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>the node filter</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Result</dt>
+<dd>
+<p>the new <code>NodeHasDependencyToFilter</code></p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_nodehasincomingdependencytypefilter"><a class="anchor" href="#_nodehasincomingdependencytypefilter"></a>nodeHasIncomingDependencyTypeFilter</h5>
+<div class="paragraph">
+<p>Creates a new <code>NodeHasIncomingDependencyTypeFilter</code>. This is an <em>IN</em> filter.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 83.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>dependencyTypeName</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>The dependency type name to accept in the filter.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Result</dt>
+<dd>
+<p>The new <code>NodeHasIncomingDependencyTypeFilter</code>.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_nodehasincomingdependencytypefilter_2"><a class="anchor" href="#_nodehasincomingdependencytypefilter_2"></a>nodeHasIncomingDependencyTypeFilter</h5>
+<div class="paragraph">
+<p>Creates a new <code>NodeHasIncomingDependencyTypeFilter</code>. This is an <em>IN</em> filter.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 83.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>dependencyType</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>The dependency type to accept in the filter.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Result</dt>
+<dd>
+<p>The new <code>NodeHasIncomingDependencyTypeFilter</code>.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_nodehasoutgoingdependencytypefilter"><a class="anchor" href="#_nodehasoutgoingdependencytypefilter"></a>nodeHasOutgoingDependencyTypeFilter</h5>
+<div class="paragraph">
+<p>Creates a new <code>NodeHasOutgoingDependencyTypeFilter</code>. This is an <em>IN</em> filter.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 83.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>dependencyTypeName</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>The dependency type name to accept in the filter.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Result</dt>
+<dd>
+<p>The new <code>NodeHasOutgoingDependencyTypeFilter</code>.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_nodehasoutgoingdependencytypefilter_2"><a class="anchor" href="#_nodehasoutgoingdependencytypefilter_2"></a>nodeHasOutgoingDependencyTypeFilter</h5>
+<div class="paragraph">
+<p>Creates a new <code>NodeHasOutgoingDependencyTypeFilter</code>. This is an <em>IN</em> filter.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 83.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>dependencyType</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>The dependency type to accept in the filter.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Result</dt>
+<dd>
+<p>The new <code>NodeHasOutgoingDependencyTypeFilter</code>.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_nodenameinfilter"><a class="anchor" href="#_nodenameinfilter"></a>nodeNameInFilter</h5>
+<div class="paragraph">
+<p>Creates a new <code>NodeNameInFilter</code>.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 83.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>patterns&#8230;&#8203;</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>The patterns (Ant path style) to accept.
+If any of the given patterns matches the name, the node is accepted.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Result</dt>
+<dd>
+<p>The new <code>NodeNameInFilter</code>.</p>
 </dd>
 </dl>
 </div>
@@ -4226,6 +4423,86 @@ Only if none of the given patterns matches the name, the node is accepted.</p>
 <dt class="hdlist1">Result</dt>
 <dd>
 <p>The new <code>NodeNameOutFilter</code>.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_nodepropertyexistsfilter"><a class="anchor" href="#_nodepropertyexistsfilter"></a>nodePropertyExistsFilter</h5>
+<div class="paragraph">
+<p>Creates a new <code>NodePropertyExistsFilter</code>. This is an <em>IN</em> filter.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 83.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>propertyName</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>The name of the property which must exist to accept the node.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Result</dt>
+<dd>
+<p>The new <code>NodePropertyExistsFilter</code>.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_nodepropertyinfilter"><a class="anchor" href="#_nodepropertyinfilter"></a>nodePropertyInFilter</h5>
+<div class="paragraph">
+<p>Creates a new <code>NodePropertyInFilter</code>.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 83.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>propertyName</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>The property name</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>value</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>The value that must match to accept the node.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Result</dt>
+<dd>
+<p>The new <code>NodePropertyInFilter</code>.</p>
 </dd>
 </dl>
 </div>
@@ -4298,158 +4575,6 @@ Only if none of the given patterns matches the name, the node is accepted.</p>
 <dt class="hdlist1">Result</dt>
 <dd>
 <p>A new <code>OrFilter</code></p>
-</dd>
-</dl>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_outgoingdependencytypefilter"><a class="anchor" href="#_outgoingdependencytypefilter"></a>outgoingDependencyTypeFilter</h5>
-<div class="paragraph">
-<p>Creates a new <code>OutgoingDependencyTypeFilter</code>. This is an <em>IN</em> filter.</p>
-</div>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 16.6666%;">
-<col style="width: 83.3334%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Parameter</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>dependencyTypeName</p>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>The dependency type name to accept in the filter.</p>
-</div></div></td>
-</tr>
-</tbody>
-</table>
-<div class="dlist">
-<dl>
-<dt class="hdlist1">Result</dt>
-<dd>
-<p>The new <code>OutgoingDependencyTypeFilter</code>.</p>
-</dd>
-</dl>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_outgoingdependencytypefilter_2"><a class="anchor" href="#_outgoingdependencytypefilter_2"></a>outgoingDependencyTypeFilter</h5>
-<div class="paragraph">
-<p>Creates a new <code>OutgoingDependencyTypeFilter</code>. This is an <em>IN</em> filter.</p>
-</div>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 16.6666%;">
-<col style="width: 83.3334%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Parameter</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>dependencyType</p>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>The dependency type to accept in the filter.</p>
-</div></div></td>
-</tr>
-</tbody>
-</table>
-<div class="dlist">
-<dl>
-<dt class="hdlist1">Result</dt>
-<dd>
-<p>The new <code>OutgoingDependencyTypeFilter</code>.</p>
-</dd>
-</dl>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_propertyexistsfilter"><a class="anchor" href="#_propertyexistsfilter"></a>propertyExistsFilter</h5>
-<div class="paragraph">
-<p>Creates a new <code>NodePropertyExistsFilter</code>. This is an <em>IN</em> filter.</p>
-</div>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 16.6666%;">
-<col style="width: 83.3334%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Parameter</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>propertyName</p>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>The name of the property which must exist to accept the node.</p>
-</div></div></td>
-</tr>
-</tbody>
-</table>
-<div class="dlist">
-<dl>
-<dt class="hdlist1">Result</dt>
-<dd>
-<p>The new <code>NodePropertyExistsFilter</code>.</p>
-</dd>
-</dl>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_propertyinfilter"><a class="anchor" href="#_propertyinfilter"></a>propertyInFilter</h5>
-<div class="paragraph">
-<p>Creates a new <code>NodePropertyInFilter</code>.</p>
-</div>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 16.6666%;">
-<col style="width: 83.3334%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Parameter</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>propertyName</p>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>The property name</p>
-</div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>value</p>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>The value that must match to accept the node.</p>
-</div></div></td>
-</tr>
-</tbody>
-</table>
-<div class="dlist">
-<dl>
-<dt class="hdlist1">Result</dt>
-<dd>
-<p>The new <code>NodePropertyInFilter</code>.</p>
 </dd>
 </dl>
 </div>
@@ -4621,6 +4746,67 @@ Defaults to <code>true</code>. So if they really should be included, set this to
 <p>The given graph, filtered to only those nodes which are part of a cycle.
 I.e., if the resulting graph is empty, then the original graph is free of cycles.
 If it is not free of cycles, QAvalidator issues a violation and marks the analysis step as <em>failed</em>.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_finddependenciesto"><a class="anchor" href="#_finddependenciesto"></a>findDependenciesTo</h5>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+This is an incubating feature, introduced in 1.2.7. It may change without further notice.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Finds all nodes which have outgoing dependencies to nodes which match one of the given patterns.
+If it finds any, it reports a violation.</p>
+</div>
+<div class="paragraph">
+<p>Returns a filtered graph which contains only the nodes specified by the patterns and those with
+dependencies to them.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 83.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>graph</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>the DependencyGraph to analyze</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>patterns</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>the patterns of the target</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Result</dt>
+<dd>
+<p>a filtered graph which contains only the nodes specified by the patterns and those with dependencies to them.</p>
 </dd>
 </dl>
 </div>
@@ -4812,6 +4998,15 @@ Use filters to print only the relevant nodes and edges.
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>The filename; it is relative to the <code>outputDir</code> defined via the <code>outputDir</code> command or
 in the Maven/Gradle config (explicitly or by default), or on the command line.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>printIfEmpty</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>if <code>true</code>, prints the (empty) file even if there are no nodes in the graph;
+if <code>false</code>, only prints the file if the graph actually contains nodes. Defaults to <code>true</code>.</p>
 </div></div></td>
 </tr>
 </tbody>
@@ -5376,7 +5571,7 @@ navigates to the dependency detail view.</p>
 <h2 id="_developer_documentation"><a class="anchor" href="#_developer_documentation"></a>5. Developer Documentation</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This is the documentation for version 1.2.7-SNAPSHOT.</p>
+<p>This is the documentation for version 1.2.7.</p>
 </div>
 <div class="paragraph">
 <p>The intended audience of this chapter are developers who want to enhance or contribute to QAvalidator.</p>
@@ -5614,15 +5809,64 @@ The mechanism is simpler than for the analysis DSL, since this DSL can&#8217;t b
 <h2 id="release-notes"><a class="anchor" href="#release-notes"></a>6. Release Notes</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_relase_1_2_7_work_in_progress"><a class="anchor" href="#_relase_1_2_7_work_in_progress"></a>6.1. Relase 1.2.7 (work in progress)</h3>
+<h3 id="_release_1_2_7_31_01_2018"><a class="anchor" href="#_release_1_2_7_31_01_2018"></a>6.1. Release 1.2.7&#8201;&#8212;&#8201;31.01.2018</h3>
 <div class="dlist">
 <dl>
+<dt class="hdlist1">Breaking Changes</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p>renamed some filters in <code>GraphFilterPlugin</code>, to have more consistent naming of the filter commands:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>(old) <code>dependencyTypeNodeFilter</code> &#8594; (new) <code>nodeHasIncomingDependencyTypeFilter</code>.<br>
+This filter&#8217;s scope is also reduced to <em>incoming</em> dependency types; use an <em>or</em> filter to combine it with outgoing dependencies, if required.</p>
+</li>
+<li>
+<p>(old) <code>outgoingDependencyTypeFilter</code> &#8594; (new) <code>nodeHasOutgoingDependencyTypeFilter</code>. Only the name changed.</p>
+</li>
+<li>
+<p>(old) <code>propertyExistsFilter</code> &#8594; (new) <code>nodePropertyExistsFilter</code>. Only the name changed.</p>
+</li>
+<li>
+<p>(old) <code>propertyInFilter</code> &#8594; (new) <code>nodePropertyInFilter</code>. Only the name changed.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</dd>
 <dt class="hdlist1">New Features</dt>
 <dd>
 <div class="ulist">
 <ul>
 <li>
 <p><a href="https://github.com/qavalidator/qavalidator/issues/3">#3</a>: new command <code>writeGraphLegend</code> writes a legend (key) for the graphs exported with <code>writeDot</code>. This is useful to see the color code for the dependency types. Also change the colors of the arrows to a more coherent color set.</p>
+</li>
+<li>
+<p><a href="https://github.com/qavalidator/qavalidator/issues/4">#4</a>: introduced new keyword in the Architecture DSL <code>usesImpl</code> to allow a dependency on an implementation part instead of an API. This is useful to model factories or Spring 4 configurations (or other exceptions from the rule, if there is a really good excuse).</p>
+</li>
+<li>
+<p><a href="https://github.com/qavalidator/qavalidator/issues/5">#5</a>: introduced new command <code>findDependenciesTo</code>: Finds all nodes which have outgoing dependencies to nodes which match one of the given patterns. If it finds any, it reports a violation.</p>
+</li>
+<li>
+<p>New filters:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>dependencyToFilter</code>: Accepts all edges which have target nodes accepted by the given base filter.</p>
+</li>
+<li>
+<p><code>nodeNameInFilter</code>: accepts all nodes which match one of the given patterns</p>
+</li>
+<li>
+<p><code>nodeHasDependencyToFilter</code>: accepts all nodes which have outgoing dependencies to nodes accepted by the given base filter</p>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
@@ -6356,7 +6600,7 @@ It does not allow to model the <em>intended</em> architecture.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.2.7-SNAPSHOT<br>
+Version 1.2.7<br>
 Last updated 2017-11-05 11:40:16 +01:00
 </div>
 </div>
